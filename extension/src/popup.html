@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font: 14px/1.5 system-ui, sans-serif;
+        color: #0f172a;
+        width: 280px;
+        margin: 0;
+        padding: 16px;
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 18px;
+        color: #ea580c;
+      }
+      p {
+        margin: 0 0 12px;
+        color: #475569;
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font: inherit;
+      }
+      button {
+        margin-top: 12px;
+        width: 100%;
+        padding: 9px;
+        border: 0;
+        border-radius: 8px;
+        background: #ea580c;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #c2410c;
+      }
+      .ok {
+        margin-top: 10px;
+        color: #15803d;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PUBLIK</h1>
+    <p>Pegá el ID de la propiedad a publicar en este portal.</p>
+    <label for="pid">ID de propiedad</label>
+    <input id="pid" type="text" placeholder="ej. 8f3a-..." />
+    <button id="save">Usar esta propiedad</button>
+    <div id="msg" class="ok" hidden>Listo. Volvé a la pestaña del portal.</div>
+    <script src="popup.js"></script>
+  </body>
+</html>

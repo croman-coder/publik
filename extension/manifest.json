@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "PUBLIK — Autocompletar portales",
+  "version": "0.1.0",
+  "description": "Rellena el formulario de publicación de los portales inmobiliarios con los datos de tu propiedad cargada en PUBLIK.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://*.infocasas.com.py/*",
+    "https://publik-iota.vercel.app/*"
+  ],
+  "action": {
+    "default_title": "PUBLIK",
+    "default_popup": "src/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.infocasas.com.py/*"],
+      "js": [
+        "src/config.js",
+        "src/engine.js",
+        "src/adapters/infocasas.js",
+        "src/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
