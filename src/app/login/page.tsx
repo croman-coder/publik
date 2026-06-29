@@ -14,7 +14,10 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
     const supabase = createClient();
-    const { error } = await supabase.auth.signInWithOtp({ email });
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+    });
     setLoading(false);
     if (error) {
       setError("No pudimos enviar el enlace. Revisá el email e intentá de nuevo.");

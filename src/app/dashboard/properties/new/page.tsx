@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { PropertyForm } from "../../../../components/property-form";
 import { PhotoUploader } from "../../../../components/photo-uploader";
@@ -61,10 +62,22 @@ export default function NewPropertyPage() {
   }
 
   return (
-    <main className="p-6 space-y-6">
-      <h1 className="text-xl font-semibold">Nueva propiedad</h1>
-      <PhotoUploader onFiles={setFiles} />
-      <PropertyForm onSubmit={save} />
+    <main className="space-y-6">
+      <div>
+        <Link
+          href="/dashboard"
+          className="text-sm font-medium text-slate-500 hover:text-slate-900"
+        >
+          ← Volver
+        </Link>
+        <h1 className="mt-1 text-2xl font-bold text-slate-900">
+          Nueva propiedad
+        </h1>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-6">
+        <PhotoUploader onFiles={setFiles} />
+        <PropertyForm onSubmit={save} />
+      </div>
     </main>
   );
 }
