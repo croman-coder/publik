@@ -12,13 +12,13 @@ describe("StatusBoard", () => {
         ]}
       />,
     );
-    expect(screen.getByText(/fb_page/)).toBeInTheDocument();
-    expect(screen.getByText(/publicada/)).toBeInTheDocument();
-    expect(screen.getAllByText(/pendiente/).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Facebook/)).toBeInTheDocument();
+    expect(screen.getByText(/Published/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Pending/).length).toBeGreaterThan(0);
   });
 
-  it("renders all 5 portals, defaulting missing ones to pendiente", () => {
+  it("renders all 5 portals, defaulting missing ones to pending", () => {
     render(<StatusBoard publications={[]} />);
-    expect(screen.getAllByText(/pendiente/)).toHaveLength(5);
+    expect(screen.getAllByText(/Pending/)).toHaveLength(5);
   });
 });

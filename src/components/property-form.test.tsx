@@ -7,19 +7,19 @@ describe("PropertyForm", () => {
     const onSubmit = vi.fn();
     render(<PropertyForm onSubmit={onSubmit} />);
 
-    fireEvent.change(screen.getByLabelText(/título/i), {
+    fireEvent.change(screen.getByLabelText(/title/i), {
       target: { value: "Depto Villa Morra" },
     });
-    fireEvent.change(screen.getByLabelText(/descripción/i), {
+    fireEvent.change(screen.getByLabelText(/description/i), {
       target: { value: "Luminoso" },
     });
-    fireEvent.change(screen.getByLabelText(/precio/i), {
+    fireEvent.change(screen.getByLabelText(/price/i), {
       target: { value: "85000" },
     });
-    fireEvent.change(screen.getByLabelText(/ciudad/i), {
+    fireEvent.change(screen.getByLabelText(/city/i), {
       target: { value: "Asunción" },
     });
-    fireEvent.submit(screen.getByRole("button", { name: /guardar/i }));
+    fireEvent.submit(screen.getByRole("button", { name: /save/i }));
 
     expect(onSubmit).toHaveBeenCalledOnce();
     expect(onSubmit.mock.calls[0][0].precio).toBe(85000);
@@ -29,7 +29,7 @@ describe("PropertyForm", () => {
   it("does not submit when price is empty", () => {
     const onSubmit = vi.fn();
     render(<PropertyForm onSubmit={onSubmit} />);
-    fireEvent.submit(screen.getByRole("button", { name: /guardar/i }));
+    fireEvent.submit(screen.getByRole("button", { name: /save/i }));
     expect(onSubmit).not.toHaveBeenCalled();
   });
 });

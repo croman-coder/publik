@@ -18,7 +18,7 @@ export default function DashboardLayout({
               href="/dashboard/properties/new"
               className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-700"
             >
-              Nueva propiedad
+              New property
             </Link>
             <LogoutButton />
           </div>

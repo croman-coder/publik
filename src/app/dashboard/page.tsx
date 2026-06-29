@@ -15,18 +15,18 @@ export default async function Dashboard() {
 
   return (
     <main className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-900">Mis propiedades</h1>
+      <h1 className="text-2xl font-bold text-slate-900">My properties</h1>
 
       {list.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center">
           <p className="text-slate-600">
-            Todavía no cargaste ninguna propiedad.
+            You haven't added any properties yet.
           </p>
           <Link
             href="/dashboard/properties/new"
             className="mt-4 inline-block rounded-lg bg-orange-600 px-5 py-2.5 font-semibold text-white transition hover:bg-orange-700"
           >
-            Cargar mi primera propiedad
+            Add my first property
           </Link>
         </div>
       ) : (

@@ -20,7 +20,7 @@ export default function LoginPage() {
     });
     setLoading(false);
     if (error) {
-      setError("No pudimos enviar el enlace. Revisá el email e intentá de nuevo.");
+      setError("We couldn't send the link. Check your email and try again.");
       return;
     }
     setSent(true);
@@ -43,17 +43,17 @@ export default function LoginPage() {
         </Link>
         <div className="relative space-y-6 max-w-md">
           <h2 className="text-4xl font-bold leading-tight">
-            Publicá en todos los portales desde un solo lugar.
+            Publish to every portal from one place.
           </h2>
           <p className="text-orange-50/90 text-lg">
-            Infocasas, Facebook, Marketplace e Instagram. Cargás la propiedad una
-            vez y PUBLIK la publica en todas partes.
+            Infocasas, Facebook, Marketplace and Instagram. Load a property once
+            and PUBLIK publishes it everywhere.
           </p>
           <ul className="space-y-3 text-orange-50">
             {[
-              "Una sola carga, todos los portales",
-              "Fotos y datos sincronizados",
-              "Estado de publicación en vivo",
+              "One upload, every portal",
+              "Photos and data in sync",
+              "Live publishing status",
             ].map((t) => (
               <li key={t} className="flex items-center gap-3">
                 <svg
@@ -74,7 +74,7 @@ export default function LoginPage() {
           </ul>
         </div>
         <p className="relative text-sm text-orange-50/70">
-          Hecho para agentes inmobiliarios de Paraguay.
+          Built for real estate agents in Paraguay.
         </p>
       </section>
 
@@ -104,27 +104,27 @@ export default function LoginPage() {
                 </svg>
               </div>
               <h1 className="text-xl font-semibold text-slate-900">
-                Revisá tu email
+                Check your email
               </h1>
               <p className="text-slate-600">
-                Te enviamos un enlace de acceso a{" "}
-                <span className="font-medium text-slate-900">{email}</span>.
-                Abrilo desde este dispositivo para entrar.
+                We sent a sign-in link to{" "}
+                <span className="font-medium text-slate-900">{email}</span>. Open
+                it on this device to get in.
               </p>
               <button
                 onClick={() => setSent(false)}
                 className="text-sm font-medium text-orange-600 hover:text-orange-700"
               >
-                Usar otro email
+                Use a different email
               </button>
             </div>
           ) : (
             <>
               <h1 className="text-2xl font-bold text-slate-900">
-                Ingresá a tu cuenta
+                Sign in to your account
               </h1>
               <p className="mt-2 text-slate-600">
-                Te mandamos un enlace mágico al email. Sin contraseñas.
+                We'll email you a magic link. No passwords.
               </p>
               <form onSubmit={signIn} className="mt-8 space-y-4">
                 <div>
@@ -141,7 +141,7 @@ export default function LoginPage() {
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="tu@email.com"
+                    placeholder="you@email.com"
                     className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/30"
                   />
                 </div>
@@ -155,16 +155,16 @@ export default function LoginPage() {
                   disabled={loading}
                   className="flex w-full items-center justify-center rounded-lg bg-orange-600 px-4 py-2.5 font-semibold text-white transition hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500/40 disabled:opacity-60"
                 >
-                  {loading ? "Enviando…" : "Ingresar"}
+                  {loading ? "Sending…" : "Sign in"}
                 </button>
               </form>
               <p className="mt-6 text-center text-sm text-slate-500">
-                ¿Querés ver planes y precios?{" "}
+                Want to see plans and pricing?{" "}
                 <Link
                   href="/"
                   className="font-medium text-orange-600 hover:text-orange-700"
                 >
-                  Conocé PUBLIK
+                  Discover PUBLIK
                 </Link>
               </p>
             </>

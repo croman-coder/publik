@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PUBLIK — Publicá propiedades en todos los portales",
+  title: "PUBLIK — Publish properties to every portal",
   description:
-    "PUBLIK permite a agentes inmobiliarios de Paraguay publicar propiedades en Infocasas, Facebook, Marketplace e Instagram desde un solo lugar.",
+    "PUBLIK lets real estate agents in Paraguay publish properties to Infocasas, Facebook, Marketplace and Instagram from one place.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

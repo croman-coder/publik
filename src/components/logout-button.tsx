@@ -17,7 +17,7 @@ export function LogoutButton() {
       onClick={logout}
       className="text-sm font-medium text-slate-600 hover:text-slate-900"
     >
-      Salir
+      Sign out
     </button>
   );
 }

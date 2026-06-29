@@ -6,13 +6,13 @@ const PORTALS = ["Infocasas", "Facebook", "Marketplace", "Instagram", "Clasipar"
 
 const FEATURES = [
   {
-    title: "Una carga, todos los portales",
-    desc: "Cargás la propiedad una sola vez y PUBLIK la publica en Infocasas, Facebook, Marketplace e Instagram.",
+    title: "One upload, every portal",
+    desc: "Load a property once and PUBLIK publishes it to Infocasas, Facebook, Marketplace and Instagram.",
     icon: <path d="M3 7h18M3 12h18M3 17h18" strokeLinecap="round" />,
   },
   {
-    title: "Fotos y datos sincronizados",
-    desc: "Subís las fotos y los datos una vez. Cada portal recibe lo que necesita, en su formato.",
+    title: "Photos and data in sync",
+    desc: "Upload photos and details once. Each portal gets exactly what it needs, in its own format.",
     icon: (
       <path
         d="m3 16 5-5 4 4 3-3 6 6M4 4h16v16H4z"
@@ -22,8 +22,8 @@ const FEATURES = [
     ),
   },
   {
-    title: "Estado en vivo",
-    desc: "Mirá en tiempo real qué propiedad ya se publicó en cada portal y cuál sigue pendiente.",
+    title: "Live status",
+    desc: "See in real time which property is already published on each portal and which is still pending.",
     icon: (
       <path
         d="M12 8v4l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
@@ -37,64 +37,64 @@ const FEATURES = [
 const STEPS = [
   {
     n: "01",
-    title: "Cargá la propiedad",
-    desc: "Fotos, precio, ubicación y detalles. Una sola vez, en menos de 2 minutos.",
+    title: "Add the property",
+    desc: "Photos, price, location and details. Just once, in under 2 minutes.",
   },
   {
     n: "02",
-    title: "Elegí los portales",
-    desc: "Marcá dónde querés publicar. PUBLIK arma cada aviso en el formato correcto.",
+    title: "Pick the portals",
+    desc: "Choose where to publish. PUBLIK builds each listing in the right format.",
   },
   {
     n: "03",
-    title: "Publicá y seguí el estado",
-    desc: "Un clic y listo. Mirá en vivo qué se publicó y qué falta, sin abrir cada portal.",
+    title: "Publish and track",
+    desc: "One click and done. Watch live what's published and what's left, without opening each portal.",
   },
 ];
 
 const PLANS = [
   {
-    name: "Inicial",
+    name: "Starter",
     price: 30,
-    posts: "30 publicaciones / mes",
-    desc: "Para el agente que arranca.",
+    posts: "30 listings / month",
+    desc: "For the agent just getting started.",
     highlight: false,
-    features: ["Todos los portales", "Fotos sincronizadas", "Estado en vivo"],
+    features: ["All portals", "Synced photos", "Live status"],
   },
   {
-    name: "Profesional",
+    name: "Professional",
     price: 40,
-    posts: "60 publicaciones / mes",
-    desc: "El plan más elegido por agentes activos.",
+    posts: "60 listings / month",
+    desc: "The plan most chosen by active agents.",
     highlight: true,
-    features: ["Todo lo de Inicial", "Más publicaciones", "Soporte prioritario"],
+    features: ["Everything in Starter", "More listings", "Priority support"],
   },
   {
-    name: "Agencia",
+    name: "Agency",
     price: 50,
-    posts: "Publicaciones ilimitadas",
-    desc: "Para equipos y oficinas con alto volumen.",
+    posts: "Unlimited listings",
+    desc: "For teams and offices with high volume.",
     highlight: false,
     features: [
-      "Todo lo de Profesional",
-      "Sin límite de publicaciones",
-      "Varios agentes",
+      "Everything in Professional",
+      "No listing limit",
+      "Multiple agents",
     ],
   },
 ];
 
 const FAQ = [
   {
-    q: "¿Necesito tarjeta para empezar?",
-    a: "No. Creás tu cuenta con el email y entrás al instante. Pagás solo cuando elegís un plan.",
+    q: "Do I need a card to start?",
+    a: "No. Create your account with your email and get in instantly. You only pay when you choose a plan.",
   },
   {
-    q: "¿En qué portales publica?",
-    a: "Infocasas, Facebook, Facebook Marketplace, Instagram y Clasipar. Sumamos más con el tiempo.",
+    q: "Which portals does it publish to?",
+    a: "Infocasas, Facebook, Facebook Marketplace, Instagram and Clasipar. We add more over time.",
   },
   {
-    q: "¿Puedo cambiar de plan?",
-    a: "Sí, cuando quieras. Subís o bajás de plan según cuántas publicaciones hagas ese mes. Sin contratos.",
+    q: "Can I change plans?",
+    a: "Yes, whenever you want. Move up or down based on how many listings you post that month. No contracts.",
   },
 ];
 
@@ -129,14 +129,14 @@ export default async function Home() {
             PUBLIK
           </span>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-            <a href="#como" className="transition hover:text-slate-900">
-              Cómo funciona
+            <a href="#how" className="transition hover:text-slate-900">
+              How it works
             </a>
-            <a href="#precios" className="transition hover:text-slate-900">
-              Precios
+            <a href="#pricing" className="transition hover:text-slate-900">
+              Pricing
             </a>
-            <a href="#preguntas" className="transition hover:text-slate-900">
-              Preguntas
+            <a href="#faq" className="transition hover:text-slate-900">
+              FAQ
             </a>
           </nav>
           <div className="flex items-center gap-2 sm:gap-4">
@@ -144,13 +144,13 @@ export default async function Home() {
               href="/login"
               className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:text-orange-600"
             >
-              Iniciar sesión
+              Sign in
             </Link>
             <Link
               href="/login"
               className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-700"
             >
-              Probar gratis
+              Try for free
             </Link>
           </div>
         </div>
@@ -170,18 +170,18 @@ export default async function Home() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm font-medium text-orange-700">
               <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-              Para agentes inmobiliarios de Paraguay
+              For real estate agents in Paraguay
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl xl:text-6xl">
-              Publicá en{" "}
+              Publish to{" "}
               <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
-                todos los portales
+                every portal
               </span>{" "}
-              desde un solo lugar.
+              from one place.
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg text-slate-600 lg:mx-0">
-              Basta de saltar de pantalla en pantalla. Cargás la propiedad una
-              vez y PUBLIK la publica en Infocasas, Facebook, Marketplace e
+              No more jumping from screen to screen. Load a property once and
+              PUBLIK publishes it to Infocasas, Facebook, Marketplace and
               Instagram.
             </p>
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
@@ -189,17 +189,17 @@ export default async function Home() {
                 href="/login"
                 className="w-full rounded-lg bg-orange-600 px-6 py-3 text-center font-semibold text-white shadow-sm transition hover:bg-orange-700 sm:w-auto"
               >
-                Empezar gratis
+                Start free
               </Link>
               <a
-                href="#precios"
+                href="#pricing"
                 className="w-full rounded-lg border border-slate-300 px-6 py-3 text-center font-semibold text-slate-700 transition hover:bg-slate-50 sm:w-auto"
               >
-                Ver precios
+                See pricing
               </a>
             </div>
             <p className="mt-4 text-sm text-slate-500">
-              Sin tarjeta · Cancelás cuando quieras
+              No card required · Cancel anytime
             </p>
           </div>
 
@@ -215,14 +215,14 @@ export default async function Home() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="font-semibold text-slate-900">
-                      Casa en Lambaré
+                      House in Lambaré
                     </div>
                     <div className="text-sm text-slate-500">
-                      3 dorm · USD 145.000
+                      3 bd · USD 145,000
                     </div>
                   </div>
                   <span className="rounded-lg bg-orange-600 px-2.5 py-1 text-xs font-semibold text-white">
-                    Publicar
+                    Publish
                   </span>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
@@ -240,12 +240,12 @@ export default async function Home() {
                       {row.ok ? (
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600">
                           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                          Listo
+                          Done
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-600">
                           <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                          En curso
+                          In progress
                         </span>
                       )}
                     </div>
@@ -260,7 +260,7 @@ export default async function Home() {
         <div className="border-y border-slate-100 bg-slate-50/60">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-6 py-6">
             <span className="text-sm font-medium text-slate-400">
-              Publicá en
+              Publish to
             </span>
             {PORTALS.map((p) => (
               <span
@@ -279,11 +279,11 @@ export default async function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Todo el trabajo pesado, automático
+              All the heavy lifting, automatic
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Dejá de copiar y pegar avisos. PUBLIK se encarga de cada portal
-              por vos.
+              Stop copying and pasting listings. PUBLIK handles every portal for
+              you.
             </p>
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-3">
@@ -313,14 +313,14 @@ export default async function Home() {
       </section>
 
       {/* How it works */}
-      <section id="como" className="bg-slate-50 py-20 sm:py-24">
+      <section id="how" className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Cómo funciona
+              How it works
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              De la carga a la publicación en tres pasos.
+              From upload to published in three steps.
             </p>
           </div>
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
@@ -338,14 +338,14 @@ export default async function Home() {
       </section>
 
       {/* Pricing */}
-      <section id="precios" className="py-20 sm:py-24">
+      <section id="pricing" className="py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Planes y precios
+              Plans and pricing
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Elegí según cuántas publicaciones hacés por mes. Sin contratos.
+              Choose based on how many listings you post per month. No contracts.
             </p>
           </div>
           <div className="mt-14 grid gap-8 lg:grid-cols-3">
@@ -360,7 +360,7 @@ export default async function Home() {
               >
                 {p.highlight && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold text-white">
-                    Más elegido
+                    Most popular
                   </span>
                 )}
                 <h3 className="text-lg font-semibold">{p.name}</h3>
@@ -369,7 +369,7 @@ export default async function Home() {
                   <span className="text-5xl font-bold tracking-tight">
                     ${p.price}
                   </span>
-                  <span className="text-slate-500">/ mes</span>
+                  <span className="text-slate-500">/ mo</span>
                 </div>
                 <p className="mt-2 text-sm font-medium text-orange-600">
                   {p.posts}
@@ -390,7 +390,7 @@ export default async function Home() {
                       : "border border-slate-300 text-slate-700 hover:bg-slate-50"
                   }`}
                 >
-                  Elegir {p.name}
+                  Choose {p.name}
                 </Link>
               </div>
             ))}
@@ -399,10 +399,10 @@ export default async function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="preguntas" className="bg-slate-50 py-20 sm:py-24">
+      <section id="faq" className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
-            Preguntas frecuentes
+            Frequently asked questions
           </h2>
           <div className="mt-12 space-y-4">
             {FAQ.map((item) => (
@@ -443,16 +443,17 @@ export default async function Home() {
               className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl"
             />
             <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-              Empezá a publicar hoy
+              Start publishing today
             </h2>
             <p className="relative mx-auto mt-4 max-w-xl text-lg text-orange-50">
-              Creá tu cuenta gratis y publicá tu primera propiedad en minutos.
+              Create your free account and publish your first property in
+              minutes.
             </p>
             <Link
               href="/login"
               className="relative mt-8 inline-block rounded-lg bg-white px-7 py-3 font-semibold text-orange-700 shadow-sm transition hover:bg-orange-50"
             >
-              Crear mi cuenta
+              Create my account
             </Link>
           </div>
         </div>
@@ -463,18 +464,18 @@ export default async function Home() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
           <span className="text-lg font-bold text-orange-600">PUBLIK</span>
           <nav className="flex items-center gap-6 text-sm text-slate-500">
-            <a href="#precios" className="hover:text-slate-900">
-              Precios
+            <a href="#pricing" className="hover:text-slate-900">
+              Pricing
             </a>
-            <a href="#preguntas" className="hover:text-slate-900">
-              Preguntas
+            <a href="#faq" className="hover:text-slate-900">
+              FAQ
             </a>
             <Link href="/login" className="hover:text-slate-900">
-              Iniciar sesión
+              Sign in
             </Link>
           </nav>
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} PUBLIK. Hecho en Paraguay.
+            © {new Date().getFullYear()} PUBLIK. Made in Paraguay.
           </p>
         </div>
       </footer>

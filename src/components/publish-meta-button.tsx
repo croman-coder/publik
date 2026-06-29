@@ -21,10 +21,10 @@ export function PublishMetaButton({ propertyId }: { propertyId: string }) {
         return;
       }
       setState("done");
-      setMessage("Publicado en Facebook e Instagram.");
+      setMessage("Published to Facebook and Instagram.");
     } catch {
       setState("error");
-      setMessage("Error de red. Intentá de nuevo.");
+      setMessage("Network error. Please try again.");
     }
   }
 
@@ -35,7 +35,7 @@ export function PublishMetaButton({ propertyId }: { propertyId: string }) {
         disabled={state === "loading"}
         className="rounded-lg bg-orange-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-orange-700 disabled:opacity-60"
       >
-        {state === "loading" ? "Publicando…" : "Publicar en FB/IG"}
+        {state === "loading" ? "Publishing…" : "Publish to FB/IG"}
       </button>
       {message && (
         <p
@@ -53,10 +53,10 @@ export function PublishMetaButton({ propertyId }: { propertyId: string }) {
 function errorLabel(code: string): string {
   switch (code) {
     case "no_meta_connection":
-      return "Conectá tu página de Facebook primero.";
+      return "Connect your Facebook page first.";
     case "no_photos":
-      return "Subí al menos una foto antes de publicar.";
+      return "Upload at least one photo before publishing.";
     default:
-      return "No se pudo publicar. Intentá de nuevo.";
+      return "Couldn't publish. Please try again.";
   }
 }
