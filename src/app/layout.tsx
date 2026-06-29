@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { I18nProvider } from "../i18n/client";
+import { getLocale } from "../i18n/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,22 +15,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PUBLIK — Publish properties to every portal",
+  title: "PUBLIK — Publicá tus propiedades en todos los portales",
   description:
-    "PUBLIK lets real estate agents in Paraguay publish properties to Infocasas, Facebook, Marketplace and Instagram from one place.",
+    "PUBLIK permite a los agentes inmobiliarios de Paraguay publicar propiedades en Infocasas, Facebook, Marketplace e Instagram desde un solo lugar.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <I18nProvider locale={locale}>{children}</I18nProvider>
+      </body>
     </html>
   );
 }

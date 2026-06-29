@@ -2,9 +2,11 @@ import Link from "next/link";
 import { createClient } from "../../lib/supabase/server";
 import { StatusBoard } from "../../components/status-board";
 import { PublishMetaButton } from "../../components/publish-meta-button";
+import { getServerDictionary } from "../../i18n/server";
 import type { Portal, EstadoPublicacion } from "../../domain/property";
 
 export default async function Dashboard() {
+  const { dict } = await getServerDictionary();
   const supabase = await createClient();
   const { data: props } = await supabase
     .from("properties")
@@ -15,18 +17,18 @@ export default async function Dashboard() {
 
   return (
     <main className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-900">My properties</h1>
+      <h1 className="text-2xl font-bold text-slate-900">
+        {dict.dashboard.myProperties}
+      </h1>
 
       {list.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center">
-          <p className="text-slate-600">
-            You haven't added any properties yet.
-          </p>
+          <p className="text-slate-600">{dict.dashboard.emptyText}</p>
           <Link
             href="/dashboard/properties/new"
             className="mt-4 inline-block rounded-lg bg-orange-600 px-5 py-2.5 font-semibold text-white transition hover:bg-orange-700"
           >
-            Add my first property
+            {dict.dashboard.emptyCta}
           </Link>
         </div>
       ) : (

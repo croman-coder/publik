@@ -4,34 +4,16 @@ import {
   validatePropertyInput,
   type PropertyInput,
 } from "../domain/property-schema";
-import {
-  OPERACIONES,
-  TIPOS,
-  MONEDAS,
-  type Operacion,
-  type Tipo,
-} from "../domain/property";
-
-const OPERACION_LABEL: Record<Operacion, string> = {
-  venta: "Sale",
-  alquiler: "Rent",
-  alquiler_temporal: "Short-term rent",
-};
-
-const TIPO_LABEL: Record<Tipo, string> = {
-  casa: "House",
-  departamento: "Apartment",
-  terreno: "Land",
-  local: "Retail space",
-  oficina: "Office",
-  deposito: "Warehouse",
-};
+import { OPERACIONES, TIPOS, MONEDAS } from "../domain/property";
+import { useI18n } from "../i18n/client";
 
 export function PropertyForm({
   onSubmit,
 }: {
   onSubmit: (p: PropertyInput) => void;
 }) {
+  const { dict } = useI18n();
+  const t = dict.form;
   const [error, setError] = useState<string | null>(null);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -54,7 +36,7 @@ export function PropertyForm({
     };
     const result = validatePropertyInput(raw);
     if (!result.success) {
-      setError("Please fill in the required fields.");
+      setError(t.requiredError);
       return;
     }
     setError(null);
@@ -64,19 +46,19 @@ export function PropertyForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-3 max-w-xl">
       <label className="block">
-        Title
+        {t.title}
         <input name="titulo" className="w-full border rounded px-2 py-1" />
       </label>
       <label className="block">
-        Description
+        {t.description}
         <textarea name="descripcion" className="w-full border rounded px-2 py-1" />
       </label>
       <label className="block">
-        Price
+        {t.price}
         <input name="precio" type="number" className="w-full border rounded px-2 py-1" />
       </label>
       <label className="block">
-        Currency
+        {t.currency}
         <select name="moneda" className="w-full border rounded px-2 py-1">
           {MONEDAS.map((m) => (
             <option key={m}>{m}</option>
@@ -84,50 +66,50 @@ export function PropertyForm({
         </select>
       </label>
       <label className="block">
-        Operation
+        {t.operation}
         <select name="operacion" className="w-full border rounded px-2 py-1">
           {OPERACIONES.map((o) => (
             <option key={o} value={o}>
-              {OPERACION_LABEL[o]}
+              {t.operacion[o]}
             </option>
           ))}
         </select>
       </label>
       <label className="block">
-        Type
+        {t.type}
         <select name="tipo" className="w-full border rounded px-2 py-1">
-          {TIPOS.map((t) => (
-            <option key={t} value={t}>
-              {TIPO_LABEL[t]}
+          {TIPOS.map((tp) => (
+            <option key={tp} value={tp}>
+              {t.tipo[tp]}
             </option>
           ))}
         </select>
       </label>
       <div className="grid grid-cols-3 gap-2">
         <label>
-          Bedrooms
+          {t.bedrooms}
           <input name="dormitorios" type="number" className="w-full border rounded px-2 py-1" />
         </label>
         <label>
-          Bathrooms
+          {t.bathrooms}
           <input name="banos" type="number" className="w-full border rounded px-2 py-1" />
         </label>
         <label>
-          Parking
+          {t.parking}
           <input name="cocheras" type="number" className="w-full border rounded px-2 py-1" />
         </label>
       </div>
       <label className="block">
-        Built area (m²)
+        {t.builtArea}
         <input name="superficieConstruidaM2" type="number" className="w-full border rounded px-2 py-1" />
       </label>
       <label className="block">
-        City
+        {t.city}
         <input name="ciudad" className="w-full border rounded px-2 py-1" />
       </label>
       {error && <p className="text-red-600 text-sm">{error}</p>}
       <button className="bg-orange-600 text-white rounded px-4 py-2">
-        Save
+        {t.save}
       </button>
     </form>
   );

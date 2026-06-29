@@ -1,101 +1,25 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "../lib/supabase/server";
+import { getServerDictionary } from "../i18n/server";
+import { LanguageToggle } from "../components/language-toggle";
 
 const PORTALS = ["Infocasas", "Facebook", "Marketplace", "Instagram", "Clasipar"];
 
-const FEATURES = [
-  {
-    title: "One upload, every portal",
-    desc: "Load a property once and PUBLIK publishes it to Infocasas, Facebook, Marketplace and Instagram.",
-    icon: <path d="M3 7h18M3 12h18M3 17h18" strokeLinecap="round" />,
-  },
-  {
-    title: "Photos and data in sync",
-    desc: "Upload photos and details once. Each portal gets exactly what it needs, in its own format.",
-    icon: (
-      <path
-        d="m3 16 5-5 4 4 3-3 6 6M4 4h16v16H4z"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
-  },
-  {
-    title: "Live status",
-    desc: "See in real time which property is already published on each portal and which is still pending.",
-    icon: (
-      <path
-        d="M12 8v4l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
-  },
-];
-
-const STEPS = [
-  {
-    n: "01",
-    title: "Add the property",
-    desc: "Photos, price, location and details. Just once, in under 2 minutes.",
-  },
-  {
-    n: "02",
-    title: "Pick the portals",
-    desc: "Choose where to publish. PUBLIK builds each listing in the right format.",
-  },
-  {
-    n: "03",
-    title: "Publish and track",
-    desc: "One click and done. Watch live what's published and what's left, without opening each portal.",
-  },
-];
-
-const PLANS = [
-  {
-    name: "Starter",
-    price: 30,
-    posts: "30 listings / month",
-    desc: "For the agent just getting started.",
-    highlight: false,
-    features: ["All portals", "Synced photos", "Live status"],
-  },
-  {
-    name: "Professional",
-    price: 40,
-    posts: "60 listings / month",
-    desc: "The plan most chosen by active agents.",
-    highlight: true,
-    features: ["Everything in Starter", "More listings", "Priority support"],
-  },
-  {
-    name: "Agency",
-    price: 50,
-    posts: "Unlimited listings",
-    desc: "For teams and offices with high volume.",
-    highlight: false,
-    features: [
-      "Everything in Professional",
-      "No listing limit",
-      "Multiple agents",
-    ],
-  },
-];
-
-const FAQ = [
-  {
-    q: "Do I need a card to start?",
-    a: "No. Create your account with your email and get in instantly. You only pay when you choose a plan.",
-  },
-  {
-    q: "Which portals does it publish to?",
-    a: "Infocasas, Facebook, Facebook Marketplace, Instagram and Clasipar. We add more over time.",
-  },
-  {
-    q: "Can I change plans?",
-    a: "Yes, whenever you want. Move up or down based on how many listings you post that month. No contracts.",
-  },
+const FEATURE_ICONS = [
+  <path key="i0" d="M3 7h18M3 12h18M3 17h18" strokeLinecap="round" />,
+  <path
+    key="i1"
+    d="m3 16 5-5 4 4 3-3 6 6M4 4h16v16H4z"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />,
+  <path
+    key="i2"
+    d="M12 8v4l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />,
 ];
 
 function Check() {
@@ -120,6 +44,9 @@ export default async function Home() {
   const { data } = await supabase.auth.getUser();
   if (data.user) redirect("/dashboard");
 
+  const { dict } = await getServerDictionary();
+  const t = dict;
+
   return (
     <div className="min-h-dvh bg-white text-slate-900">
       {/* Nav */}
@@ -130,27 +57,28 @@ export default async function Home() {
           </span>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
             <a href="#how" className="transition hover:text-slate-900">
-              How it works
+              {t.nav.how}
             </a>
             <a href="#pricing" className="transition hover:text-slate-900">
-              Pricing
+              {t.nav.pricing}
             </a>
             <a href="#faq" className="transition hover:text-slate-900">
-              FAQ
+              {t.nav.faq}
             </a>
           </nav>
           <div className="flex items-center gap-2 sm:gap-4">
+            <LanguageToggle />
             <Link
               href="/login"
               className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:text-orange-600"
             >
-              Sign in
+              {t.nav.signIn}
             </Link>
             <Link
               href="/login"
               className="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-700"
             >
-              Try for free
+              {t.nav.tryFree}
             </Link>
           </div>
         </div>
@@ -158,10 +86,7 @@ export default async function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -top-40 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-orange-200/50 blur-3xl" />
           <div className="absolute right-0 top-40 h-72 w-72 rounded-full bg-amber-100/60 blur-3xl" />
         </div>
@@ -170,37 +95,33 @@ export default async function Home() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm font-medium text-orange-700">
               <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-              For real estate agents in Paraguay
+              {t.hero.badge}
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl xl:text-6xl">
-              Publish to{" "}
+              {t.hero.titleA}
               <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
-                every portal
-              </span>{" "}
-              from one place.
+                {t.hero.titleHighlight}
+              </span>
+              {t.hero.titleB}
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg text-slate-600 lg:mx-0">
-              No more jumping from screen to screen. Load a property once and
-              PUBLIK publishes it to Infocasas, Facebook, Marketplace and
-              Instagram.
+              {t.hero.subtitle}
             </p>
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
               <Link
                 href="/login"
                 className="w-full rounded-lg bg-orange-600 px-6 py-3 text-center font-semibold text-white shadow-sm transition hover:bg-orange-700 sm:w-auto"
               >
-                Start free
+                {t.hero.startFree}
               </Link>
               <a
                 href="#pricing"
                 className="w-full rounded-lg border border-slate-300 px-6 py-3 text-center font-semibold text-slate-700 transition hover:bg-slate-50 sm:w-auto"
               >
-                See pricing
+                {t.hero.seePricing}
               </a>
             </div>
-            <p className="mt-4 text-sm text-slate-500">
-              No card required · Cancel anytime
-            </p>
+            <p className="mt-4 text-sm text-slate-500">{t.hero.noCard}</p>
           </div>
 
           {/* Dashboard preview mockup */}
@@ -215,14 +136,14 @@ export default async function Home() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="font-semibold text-slate-900">
-                      House in Lambaré
+                      {t.hero.mockTitle}
                     </div>
                     <div className="text-sm text-slate-500">
-                      3 bd · USD 145,000
+                      {t.hero.mockSpecs}
                     </div>
                   </div>
                   <span className="rounded-lg bg-orange-600 px-2.5 py-1 text-xs font-semibold text-white">
-                    Publish
+                    {t.hero.mockPublish}
                   </span>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
@@ -240,12 +161,12 @@ export default async function Home() {
                       {row.ok ? (
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600">
                           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                          Done
+                          {t.hero.statusDone}
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-600">
                           <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                          In progress
+                          {t.hero.statusInProgress}
                         </span>
                       )}
                     </div>
@@ -260,13 +181,10 @@ export default async function Home() {
         <div className="border-y border-slate-100 bg-slate-50/60">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-6 py-6">
             <span className="text-sm font-medium text-slate-400">
-              Publish to
+              {t.hero.publishTo}
             </span>
             {PORTALS.map((p) => (
-              <span
-                key={p}
-                className="text-base font-semibold text-slate-500"
-              >
+              <span key={p} className="text-base font-semibold text-slate-500">
                 {p}
               </span>
             ))}
@@ -279,15 +197,12 @@ export default async function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              All the heavy lifting, automatic
+              {t.features.title}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              Stop copying and pasting listings. PUBLIK handles every portal for
-              you.
-            </p>
+            <p className="mt-4 text-lg text-slate-600">{t.features.subtitle}</p>
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-3">
-            {FEATURES.map((f) => (
+            {t.features.items.map((f, i) => (
               <div
                 key={f.title}
                 className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg hover:shadow-orange-100/50"
@@ -301,7 +216,7 @@ export default async function Home() {
                     strokeWidth="1.8"
                     aria-hidden
                   >
-                    {f.icon}
+                    {FEATURE_ICONS[i]}
                   </svg>
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">{f.title}</h3>
@@ -317,18 +232,14 @@ export default async function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              How it works
+              {t.how.title}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              From upload to published in three steps.
-            </p>
+            <p className="mt-4 text-lg text-slate-600">{t.how.subtitle}</p>
           </div>
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {STEPS.map((s) => (
+            {t.how.steps.map((s) => (
               <div key={s.n} className="relative">
-                <span className="text-5xl font-bold text-orange-200">
-                  {s.n}
-                </span>
+                <span className="text-5xl font-bold text-orange-200">{s.n}</span>
                 <h3 className="mt-3 text-lg font-semibold">{s.title}</h3>
                 <p className="mt-2 text-slate-600">{s.desc}</p>
               </div>
@@ -342,58 +253,59 @@ export default async function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Plans and pricing
+              {t.pricing.title}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              Choose based on how many listings you post per month. No contracts.
-            </p>
+            <p className="mt-4 text-lg text-slate-600">{t.pricing.subtitle}</p>
           </div>
           <div className="mt-14 grid gap-8 lg:grid-cols-3">
-            {PLANS.map((p) => (
-              <div
-                key={p.name}
-                className={`relative flex flex-col rounded-2xl border bg-white p-8 ${
-                  p.highlight
-                    ? "border-orange-600 shadow-xl shadow-orange-100 lg:-translate-y-2"
-                    : "border-slate-200"
-                }`}
-              >
-                {p.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold text-white">
-                    Most popular
-                  </span>
-                )}
-                <h3 className="text-lg font-semibold">{p.name}</h3>
-                <p className="mt-1 text-sm text-slate-500">{p.desc}</p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold tracking-tight">
-                    ${p.price}
-                  </span>
-                  <span className="text-slate-500">/ mo</span>
-                </div>
-                <p className="mt-2 text-sm font-medium text-orange-600">
-                  {p.posts}
-                </p>
-                <ul className="mt-7 space-y-3 text-sm text-slate-600">
-                  {p.features.map((feat) => (
-                    <li key={feat} className="flex items-center gap-2.5">
-                      <Check />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/login"
-                  className={`mt-8 rounded-lg px-4 py-2.5 text-center font-semibold transition ${
-                    p.highlight
-                      ? "bg-orange-600 text-white hover:bg-orange-700"
-                      : "border border-slate-300 text-slate-700 hover:bg-slate-50"
+            {t.pricing.plans.map((p, i) => {
+              const highlight = i === 1;
+              return (
+                <div
+                  key={p.name}
+                  className={`relative flex flex-col rounded-2xl border bg-white p-8 ${
+                    highlight
+                      ? "border-orange-600 shadow-xl shadow-orange-100 lg:-translate-y-2"
+                      : "border-slate-200"
                   }`}
                 >
-                  Choose {p.name}
-                </Link>
-              </div>
-            ))}
+                  {highlight && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold text-white">
+                      {t.pricing.mostPopular}
+                    </span>
+                  )}
+                  <h3 className="text-lg font-semibold">{p.name}</h3>
+                  <p className="mt-1 text-sm text-slate-500">{p.desc}</p>
+                  <div className="mt-6 flex items-baseline gap-1">
+                    <span className="text-5xl font-bold tracking-tight">
+                      ${p.price}
+                    </span>
+                    <span className="text-slate-500">{t.pricing.perMonth}</span>
+                  </div>
+                  <p className="mt-2 text-sm font-medium text-orange-600">
+                    {p.posts}
+                  </p>
+                  <ul className="mt-7 space-y-3 text-sm text-slate-600">
+                    {p.features.map((feat) => (
+                      <li key={feat} className="flex items-center gap-2.5">
+                        <Check />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/login"
+                    className={`mt-8 rounded-lg px-4 py-2.5 text-center font-semibold transition ${
+                      highlight
+                        ? "bg-orange-600 text-white hover:bg-orange-700"
+                        : "border border-slate-300 text-slate-700 hover:bg-slate-50"
+                    }`}
+                  >
+                    {t.pricing.choose} {p.name}
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -402,10 +314,10 @@ export default async function Home() {
       <section id="faq" className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
-            Frequently asked questions
+            {t.faq.title}
           </h2>
           <div className="mt-12 space-y-4">
-            {FAQ.map((item) => (
+            {t.faq.items.map((item) => (
               <details
                 key={item.q}
                 className="group rounded-xl border border-slate-200 bg-white p-5 [&_summary]:cursor-pointer"
@@ -443,17 +355,16 @@ export default async function Home() {
               className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl"
             />
             <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">
-              Start publishing today
+              {t.cta.title}
             </h2>
             <p className="relative mx-auto mt-4 max-w-xl text-lg text-orange-50">
-              Create your free account and publish your first property in
-              minutes.
+              {t.cta.subtitle}
             </p>
             <Link
               href="/login"
               className="relative mt-8 inline-block rounded-lg bg-white px-7 py-3 font-semibold text-orange-700 shadow-sm transition hover:bg-orange-50"
             >
-              Create my account
+              {t.cta.button}
             </Link>
           </div>
         </div>
@@ -465,17 +376,17 @@ export default async function Home() {
           <span className="text-lg font-bold text-orange-600">PUBLIK</span>
           <nav className="flex items-center gap-6 text-sm text-slate-500">
             <a href="#pricing" className="hover:text-slate-900">
-              Pricing
+              {t.footer.pricing}
             </a>
             <a href="#faq" className="hover:text-slate-900">
-              FAQ
+              {t.footer.faq}
             </a>
             <Link href="/login" className="hover:text-slate-900">
-              Sign in
+              {t.footer.signIn}
             </Link>
           </nav>
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} PUBLIK. Made in Paraguay.
+            © {new Date().getFullYear()} PUBLIK. {t.footer.rights}
           </p>
         </div>
       </footer>

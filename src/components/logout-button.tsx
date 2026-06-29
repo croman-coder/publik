@@ -1,9 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { createClient } from "../lib/supabase/client";
+import { useI18n } from "../i18n/client";
 
 export function LogoutButton() {
   const router = useRouter();
+  const { dict } = useI18n();
 
   async function logout() {
     const supabase = createClient();
@@ -17,7 +19,7 @@ export function LogoutButton() {
       onClick={logout}
       className="text-sm font-medium text-slate-600 hover:text-slate-900"
     >
-      Sign out
+      {dict.dashboard.signOut}
     </button>
   );
 }

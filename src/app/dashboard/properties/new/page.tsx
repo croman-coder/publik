@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { PropertyForm } from "../../../../components/property-form";
 import { PhotoUploader } from "../../../../components/photo-uploader";
 import { createClient } from "../../../../lib/supabase/client";
+import { useI18n } from "../../../../i18n/client";
 import type { PropertyInput } from "../../../../domain/property-schema";
 
 export default function NewPropertyPage() {
   const router = useRouter();
+  const { dict } = useI18n();
   const [files, setFiles] = useState<File[]>([]);
 
   async function save(input: PropertyInput) {
@@ -68,10 +70,10 @@ export default function NewPropertyPage() {
           href="/dashboard"
           className="text-sm font-medium text-slate-500 hover:text-slate-900"
         >
-          ← Back
+          {dict.dashboard.back}
         </Link>
         <h1 className="mt-1 text-2xl font-bold text-slate-900">
-          New property
+          {dict.dashboard.newPropertyTitle}
         </h1>
       </div>
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-6">

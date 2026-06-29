@@ -1,9 +1,13 @@
 "use client";
 import { useState } from "react";
+import { useI18n } from "../i18n/client";
+import type { Dictionary } from "../i18n/dictionaries";
 
 type State = "idle" | "loading" | "done" | "error";
 
 export function PublishMetaButton({ propertyId }: { propertyId: string }) {
+  const { dict } = useI18n();
+  const t = dict.publish;
   const [state, setState] = useState<State>("idle");
   const [message, setMessage] = useState<string | null>(null);
 
@@ -17,14 +21,14 @@ export function PublishMetaButton({ propertyId }: { propertyId: string }) {
       const body = await res.json();
       if (!res.ok) {
         setState("error");
-        setMessage(errorLabel(body.error));
+        setMessage(errorLabel(body.error, t));
         return;
       }
       setState("done");
-      setMessage("Published to Facebook and Instagram.");
+      setMessage(t.success);
     } catch {
       setState("error");
-      setMessage("Network error. Please try again.");
+      setMessage(t.networkError);
     }
   }
 
@@ -35,7 +39,7 @@ export function PublishMetaButton({ propertyId }: { propertyId: string }) {
         disabled={state === "loading"}
         className="rounded-lg bg-orange-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-orange-700 disabled:opacity-60"
       >
-        {state === "loading" ? "Publishing…" : "Publish to FB/IG"}
+        {state === "loading" ? t.publishing : t.idle}
       </button>
       {message && (
         <p
@@ -50,13 +54,13 @@ export function PublishMetaButton({ propertyId }: { propertyId: string }) {
   );
 }
 
-function errorLabel(code: string): string {
+function errorLabel(code: string, t: Dictionary["publish"]): string {
   switch (code) {
     case "no_meta_connection":
-      return "Connect your Facebook page first.";
+      return t.noConnection;
     case "no_photos":
-      return "Upload at least one photo before publishing.";
+      return t.noPhotos;
     default:
-      return "Couldn't publish. Please try again.";
+      return t.genericError;
   }
 }
