@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/server";
 import { StatusBoard } from "../../components/status-board";
+import { PublishMetaButton } from "../../components/publish-meta-button";
 import type { Portal, EstadoPublicacion } from "../../domain/property";
 
 export default async function Dashboard() {
@@ -35,6 +36,7 @@ export default async function Dashboard() {
                 }[]
               }
             />
+            <PublishMetaButton propertyId={p.id} />
           </li>
         ))}
       </ul>
