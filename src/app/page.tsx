@@ -6,9 +6,17 @@ import { JsonLd } from "../components/landing/JsonLd";
 import type { LandingDict } from "../components/landing/types";
 
 export default async function Home() {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getUser();
-  if (data.user) redirect("/dashboard");
+  // El landing es público: si Supabase no está configurado (p. ej. un preview sin
+  // variables de entorno), igual renderizamos la landing en vez de tirar 500.
+  let isLoggedIn = false;
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+    isLoggedIn = Boolean(data.user);
+  } catch {
+    isLoggedIn = false;
+  }
+  if (isLoggedIn) redirect("/dashboard");
 
   const { dict, locale } = await getServerDictionary();
   const t: LandingDict = {
