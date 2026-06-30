@@ -5,8 +5,117 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* ----------------------------------------------------------------------------
+   PUBLIK landing — design tokens (Modern Dark · cinematic · orange)
+   Additive: does not change the app's default light theme. The landing opts in
+   via the .landing-root wrapper and the utility classes below.
+---------------------------------------------------------------------------- */
+@theme {
+  --color-bg: #0a0b0d;
+  --color-bg-2: #0e0f12;
+  --color-surface: #141519;
+  --color-surface-2: #1a1c21;
+  --color-line: #24262c;
+
+  --color-ink: #f5f4f2;
+  --color-muted: #9b9a98;
+  --color-faint: #6c6b69;
+
+  --color-accent: #f97316;
+  --color-accent-2: #fb923c;
+  --color-accent-deep: #ea580c;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
 body {
   background: #ffffff;
   color: #0f172a;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Landing wrapper — dark cinematic surface scoped to the marketing page only */
+.landing-root {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+.landing-root ::selection {
+  background-color: color-mix(in oklab, var(--color-accent) 40%, transparent);
+  color: #ffffff;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.glass {
+  background-color: color-mix(in oklab, var(--color-surface) 70%, transparent);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid color-mix(in oklab, #ffffff 8%, transparent);
+}
+.hairline {
+  border: 1px solid color-mix(in oklab, #ffffff 8%, transparent);
+}
+
+.spotlight {
+  background: radial-gradient(60% 50% at 50% 0%, color-mix(in oklab, var(--color-accent) 16%, transparent) 0%, transparent 70%);
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -28px, 0) scale(1.06);
+  }
+}
+.animate-float-slow {
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float-slow {
+    animation: none;
+  }
+}
+
+.landing-root :where(a, button, [role="button"], input, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent-2);
+  outline-offset: 2px;
+  border-radius: 6px;
 }

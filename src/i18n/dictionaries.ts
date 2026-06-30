@@ -63,6 +63,18 @@ export interface Dictionary {
     signIn: string;
     rights: string;
   };
+  problem: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    items: { title: string; desc: string }[];
+  };
+  metrics: {
+    eyebrow: string;
+    title: string;
+    items: { value: string; label: string }[];
+    note: string;
+  };
   login: {
     brandTitle: string;
     brandSubtitle: string;
@@ -255,6 +267,37 @@ const es: Dictionary = {
     faq: "Preguntas",
     signIn: "Iniciar sesión",
     rights: "Hecho en Paraguay.",
+  },
+  problem: {
+    eyebrow: "El problema",
+    title: "Publicar a mano, portal por portal, te roba el día.",
+    subtitle:
+      "El trabajo que más tiempo te consume no es vender: es copiar, pegar y mantener al día el mismo aviso en todos lados.",
+    items: [
+      {
+        title: "Cargas repetidas",
+        desc: "La misma propiedad, cargada cinco veces, con cinco formatos distintos. Horas que no facturás.",
+      },
+      {
+        title: "Datos desincronizados",
+        desc: "Cambiás un precio y tenés que actualizarlo, uno por uno, en cada portal. Algo siempre queda mal.",
+      },
+      {
+        title: "Avisos vencidos",
+        desc: "Un dato desactualizado y perdés la consulta. Pasa más seguido de lo que te gustaría.",
+      },
+    ],
+  },
+  metrics: {
+    eyebrow: "Por qué PUBLIK",
+    title: "Menos tiempo publicando. Más tiempo cerrando.",
+    items: [
+      { value: "1", label: "Carga por propiedad" },
+      { value: "5", label: "Portales en un clic" },
+      { value: "2 min", label: "Para publicar en todos" },
+      { value: "100%", label: "Estado sincronizado" },
+    ],
+    note: "Infocasas, Facebook, Marketplace, Instagram y Clasipar.",
   },
   login: {
     brandTitle: "Publicá en todos los portales desde un solo lugar.",
@@ -477,6 +520,37 @@ const en: Dictionary = {
     faq: "FAQ",
     signIn: "Sign in",
     rights: "Made in Paraguay.",
+  },
+  problem: {
+    eyebrow: "The problem",
+    title: "Posting by hand, portal by portal, eats your day.",
+    subtitle:
+      "The work that takes the most time isn't selling — it's copying, pasting and keeping the same listing up to date everywhere.",
+    items: [
+      {
+        title: "Repeated uploads",
+        desc: "The same property, loaded five times, in five different formats. Hours you don't bill.",
+      },
+      {
+        title: "Out-of-sync data",
+        desc: "Change a price and you have to update it, one by one, on every portal. Something is always off.",
+      },
+      {
+        title: "Stale listings",
+        desc: "One outdated detail and you lose the lead. It happens more often than you'd like.",
+      },
+    ],
+  },
+  metrics: {
+    eyebrow: "Why PUBLIK",
+    title: "Less time posting. More time closing.",
+    items: [
+      { value: "1", label: "Upload per property" },
+      { value: "5", label: "Portals in one click" },
+      { value: "2 min", label: "To publish everywhere" },
+      { value: "100%", label: "Status in sync" },
+    ],
+    note: "Infocasas, Facebook, Marketplace, Instagram and Clasipar.",
   },
   login: {
     brandTitle: "Publish to every portal from one place.",
