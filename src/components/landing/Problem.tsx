@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ParallaxImage } from "./ParallaxImage";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "./Reveal";
 import { IconCopy, IconAlert, IconClock } from "./Icons";
@@ -15,15 +15,8 @@ export function Problem({ t }: { t: LandingDict["problem"] }) {
 
       <div className="mt-16 grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl hairline">
-            <Image
-              src="/media/facade.jpg"
-              alt=""
-              aria-hidden
-              width={1280}
-              height={720}
-              className="h-full w-full object-cover"
-            />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl hairline">
+            <ParallaxImage src="/media/facade.jpg" />
             <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent" />
           </div>
         </Reveal>

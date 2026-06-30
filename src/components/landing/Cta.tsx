@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ParallaxImage } from "./ParallaxImage";
 import { motion } from "framer-motion";
 import { Button } from "./Button";
 import { IconArrowRight } from "./Icons";
@@ -18,7 +18,7 @@ export function Cta({ t }: { t: LandingDict["cta"] }) {
         transition={{ duration: 0.9, ease }}
         className="relative overflow-hidden rounded-[2rem] hairline"
       >
-        <Image src="/media/hero-poster.jpg" alt="" aria-hidden fill className="object-cover opacity-30" />
+        <ParallaxImage src="/media/keys.jpg" className="opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-br from-bg via-bg/90 to-accent-deep/30" />
         <div className="absolute -bottom-24 left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-accent/25 blur-[120px]" />
 
