@@ -27,7 +27,7 @@ export function Hero({ t }: { t: LandingDict["hero"] }) {
     <section
       id="top"
       ref={ref}
-      className="grain relative flex min-h-dvh flex-col justify-center overflow-hidden px-5 pb-20 pt-28"
+      className="grain relative isolate flex min-h-dvh flex-col justify-center overflow-hidden px-5 pb-20 pt-28"
     >
       {/* Background video */}
       <motion.div style={{ y: mediaY, scale: mediaScale }} className="absolute inset-0 -z-20">
@@ -42,7 +42,9 @@ export function Hero({ t }: { t: LandingDict["hero"] }) {
           <source src="/media/hero.mp4" type="video/mp4" />
         </video>
       </motion.div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg/75 via-bg/55 to-bg" />
+      <div className="absolute inset-0 -z-10 bg-bg/30" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-bg/85 via-bg/35 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-transparent to-bg/35" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_50%_120%,rgba(249,115,22,0.22),transparent_60%)]" />
       <div className="pointer-events-none absolute -left-40 top-1/4 -z-10 h-[34rem] w-[34rem] rounded-full bg-accent/20 blur-[140px] animate-float-slow" />
 
@@ -53,17 +55,24 @@ export function Hero({ t }: { t: LandingDict["hero"] }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-[0.8rem] text-muted backdrop-blur-md"
+            className="relative inline-flex rounded-full p-px [background:linear-gradient(120deg,rgba(249,115,22,0.55),rgba(255,255,255,0.10)_42%,rgba(255,255,255,0.04))]"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(249,115,22,0.8)]" />
-            {t.badge}
+            <span className="inline-flex items-center gap-2.5 rounded-full bg-bg/70 py-1.5 pl-2.5 pr-4 backdrop-blur-md">
+              <span className="relative flex h-2 w-2 items-center justify-center">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/60" />
+                <span className="relative h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(249,115,22,0.7)]" />
+              </span>
+              <span className="text-[0.78rem] font-medium tracking-tight text-ink/80">
+                {t.badge}
+              </span>
+            </span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.05 }}
-            className="mt-7 font-display text-[2.6rem] font-medium leading-[1.05] tracking-[-0.02em] text-balance sm:text-6xl lg:text-[4.1rem]"
+            className="mt-7 font-display text-[2.6rem] font-medium leading-[1.05] tracking-[-0.02em] text-balance [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-[4.1rem]"
           >
             {t.titleA}
             <span className="text-accent">{t.titleHighlight}</span>
@@ -113,7 +122,7 @@ export function Hero({ t }: { t: LandingDict["hero"] }) {
           transition={{ duration: 1, ease, delay: 0.3 }}
           className="relative mx-auto w-full max-w-md lg:mx-0"
         >
-          <div className="glass rounded-3xl p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]">
+          <div className="rounded-3xl border border-white/10 bg-bg-2/85 p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.85)] backdrop-blur-xl">
             <div className="flex items-center gap-1.5 pb-4">
               <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
               <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
