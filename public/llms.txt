@@ -1,0 +1,30 @@
+# PUBLIK
+
+> Plataforma SaaS para agentes inmobiliarios de Paraguay. Cargás una propiedad una sola
+> vez y PUBLIK la publica y sincroniza en todos los portales: Infocasas, Facebook,
+> Facebook Marketplace, Instagram y Clasipar.
+
+## Qué resuelve
+- Evita cargar la misma propiedad manualmente en cada portal.
+- Mantiene precios, fotos y datos sincronizados en todos lados desde un solo lugar.
+- Muestra en vivo el estado de publicación por portal.
+
+## Cómo funciona
+1. Cargás la propiedad una vez (fotos, precio, ubicación, detalles).
+2. Elegís en qué portales publicar.
+3. PUBLIK publica y mantiene todo sincronizado; seguís el estado en el panel.
+
+## Planes (USD / mes)
+- Inicial — USD 30 — 30 publicaciones/mes.
+- Profesional — USD 40 — 60 publicaciones/mes (el más elegido).
+- Agencia — USD 50 — publicaciones ilimitadas, varios agentes.
+Sin contratos. Sin tarjeta para empezar (alta con magic-link por email).
+
+## Portales soportados
+Infocasas, Facebook, Facebook Marketplace, Instagram, Clasipar (se suman más con el tiempo).
+
+## Público
+Agentes inmobiliarios y agencias de Paraguay.
+
+## Idiomas
+Español (predeterminado) e inglés.
