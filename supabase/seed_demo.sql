@@ -14,17 +14,17 @@
 
 do $$
 declare
-  v_email  text := 'tu@email.com';   -- <<<<<< CAMBIAR POR TU EMAIL
   v_agent  uuid;
   v_agency uuid;
   p1 uuid; p2 uuid; p3 uuid; p4 uuid; p5 uuid;
 begin
+  -- Agarra automáticamente el último usuario que inició sesión (tu cuenta).
   select id, agency_id into v_agent, v_agency
-  from app_users where email = v_email;
+  from app_users order by created_at desc limit 1;
 
   if v_agent is null then
     raise exception
-      'No hay usuario para % . Iniciá sesión primero en /login con ese email y volvé a correr.', v_email;
+      'No hay ningún usuario todavía. Iniciá sesión primero en /login (te llega un magic link al email) y volvé a correr.';
   end if;
 
   -- Limpieza idempotente: solo las demo de esta agencia
