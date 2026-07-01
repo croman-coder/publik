@@ -50,6 +50,43 @@ body {
 .font-display {
   font-family: var(--font-display);
 }
+
+/* Prosa de páginas legales */
+.legal-prose h2 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 2.4rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+.legal-prose h3 {
+  color: var(--color-ink);
+  font-weight: 600;
+  margin-top: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+.legal-prose p {
+  margin-top: 0.6rem;
+}
+.legal-prose strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.legal-prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-prose ul {
+  margin-top: 0.6rem;
+  list-style: disc;
+  padding-left: 1.3rem;
+}
+.legal-prose li {
+  margin-top: 0.35rem;
+}
 .text-balance {
   text-wrap: balance;
 }
