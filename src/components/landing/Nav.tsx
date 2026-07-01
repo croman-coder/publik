@@ -27,6 +27,7 @@ export function Nav({ t }: { t: LandingDict["nav"] }) {
     { label: t.how, href: "#how" },
     { label: t.pricing, href: "#pricing" },
     { label: t.faq, href: "#faq" },
+    { label: "Demo", href: "/demo" },
   ];
 
   return (
