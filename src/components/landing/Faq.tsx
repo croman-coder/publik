@@ -12,7 +12,7 @@ export function Faq({ t }: { t: LandingDict["faq"] }) {
 
   return (
     <section id="faq" className="relative mx-auto max-w-3xl px-5 py-24 sm:py-28">
-      <SectionHeading eyebrow="FAQ" title={t.title} />
+      <SectionHeading title={t.title} />
 
       <div className="mt-12 space-y-3">
         {t.items.map((item, i) => {

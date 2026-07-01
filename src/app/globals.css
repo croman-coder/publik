@@ -11,15 +11,17 @@
    via the .landing-root wrapper and the utility classes below.
 ---------------------------------------------------------------------------- */
 @theme {
-  --color-bg: #0a0b0d;
-  --color-bg-2: #0e0f12;
-  --color-surface: #141519;
-  --color-surface-2: #1a1c21;
-  --color-line: #24262c;
+  /* Neutros tibios: tintados hacia el hue de marca (ámbar) para armonizar con la
+     fotografía cálida. Nunca negro/blanco puro. */
+  --color-bg: #0b0907;
+  --color-bg-2: #100d0a;
+  --color-surface: #181410;
+  --color-surface-2: #211c16;
+  --color-line: #2c261f;
 
-  --color-ink: #f5f4f2;
-  --color-muted: #9b9a98;
-  --color-faint: #6c6b69;
+  --color-ink: #f7f3ed;
+  --color-muted: #a49d92;
+  --color-faint: #756d62;
 
   --color-accent: #f97316;
   --color-accent-2: #fb923c;

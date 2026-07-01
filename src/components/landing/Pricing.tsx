@@ -12,7 +12,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function Pricing({ t }: { t: LandingDict["pricing"] }) {
   return (
     <section id="pricing" className="relative mx-auto max-w-6xl px-5 py-24 sm:py-32">
-      <SectionHeading eyebrow={t.title} title={t.subtitle} />
+      <SectionHeading title={t.title} description={t.subtitle} />
 
       <div className="mt-16 grid gap-6 lg:grid-cols-3">
         {t.plans.map((p, i) => {

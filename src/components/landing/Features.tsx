@@ -71,7 +71,7 @@ export function Features({ t }: { t: LandingDict["features"] }) {
 
   return (
     <section id="features" className="relative mx-auto max-w-6xl px-5 py-24 sm:py-32">
-      <SectionHeading eyebrow={t.title} title={t.subtitle} />
+      <SectionHeading title={t.title} description={t.subtitle} />
 
       <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Tile className="sm:col-span-2 lg:min-h-[22rem]">

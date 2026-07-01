@@ -72,7 +72,7 @@ export function Hero({ t }: { t: LandingDict["hero"] }) {
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.05 }}
-            className="mt-7 font-display text-[2.6rem] font-medium leading-[1.05] tracking-[-0.02em] text-balance [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-[4.1rem]"
+            className="mt-7 font-display text-[clamp(2.5rem,5.6vw,4.4rem)] font-medium leading-[1.06] tracking-[-0.02em] text-balance [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]"
           >
             {t.titleA}
             <span className="text-accent">{t.titleHighlight}</span>

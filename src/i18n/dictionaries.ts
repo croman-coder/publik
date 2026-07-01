@@ -525,7 +525,7 @@ const en: Dictionary = {
     eyebrow: "The problem",
     title: "Posting by hand, portal by portal, eats your day.",
     subtitle:
-      "The work that takes the most time isn't selling — it's copying, pasting and keeping the same listing up to date everywhere.",
+      "The work that takes the most time isn't selling. It's copying, pasting and keeping the same listing up to date everywhere.",
     items: [
       {
         title: "Repeated uploads",

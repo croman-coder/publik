@@ -3,7 +3,7 @@ import { SITE_NAME } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${SITE_NAME} — Publicá en todos los portales`,
+    name: `${SITE_NAME}: Publicá en todos los portales`,
     short_name: SITE_NAME,
     description:
       "Plataforma para agentes inmobiliarios: cargá una propiedad una vez y publicala en todos los portales.",

@@ -11,6 +11,6 @@ export const SITE_DESCRIPTION = {
 } as const;
 
 export const SITE_TITLE = {
-  es: "PUBLIK — Publicá tus propiedades en todos los portales",
-  en: "PUBLIK — Publish your properties to every portal",
+  es: "PUBLIK: Publicá tus propiedades en todos los portales",
+  en: "PUBLIK: Publish your properties to every portal",
 } as const;
