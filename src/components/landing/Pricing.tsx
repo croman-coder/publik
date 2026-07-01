@@ -55,7 +55,7 @@ export function Pricing({ t }: { t: LandingDict["pricing"] }) {
                 ))}
               </ul>
               <Button
-                href="/login"
+                href={`/checkout?plan=${(["inicial", "profesional", "agencia"] as const)[i] ?? "profesional"}`}
                 variant={highlight ? "primary" : "secondary"}
                 size="md"
                 className="mt-8 w-full"
